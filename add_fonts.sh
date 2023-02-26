@@ -24,7 +24,7 @@ use_sudo mv -f MesloLGS_NF /usr/share/fonts/truetype/
 use_sudo fc-cache -f -v
 clear
 use_sudo apt install -y gconf2
-gconftool-2 --set /apps/gnome-terminal/profiles/Default/font --type string "MesloLGS NF Regular"
+gconftool-2 --set /apps/gnome-terminal/profiles/Default/font --type string "MesloLGS NF"
 echo "finish added fonts"
 
 use_sudo apt install -y git wget curl wget zsh
