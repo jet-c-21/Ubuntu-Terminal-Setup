@@ -26,6 +26,8 @@ clear
 
 echo "finish added fonts"
 
-use_sudo apt install -y zsh
+use_sudo apt install -y git curl zsh
 
 cat /etc/shells
+
+zsh
