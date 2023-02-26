@@ -36,6 +36,3 @@ echo "finish installed sublime"
 use_sudo apt install -y wget curl wget zsh
 use_sudo sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 chsh -s $(which zsh)
-
-echo "exit"
-exit 
