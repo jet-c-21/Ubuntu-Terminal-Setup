@@ -28,6 +28,6 @@ echo "finish added fonts"
 
 use_sudo apt install -y zsh
 
-chsh -s $(which zsh) -y
+use_sudo chsh -s $(which zsh)
 
-
+exit 
