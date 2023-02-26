@@ -26,8 +26,13 @@ clear
 
 echo "finish added fonts"
 
-use_sudo apt install -y git curl zsh
+use_sudo apt-get install -y wget curl wget zsh
+use_sudo sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+chsh -s $(which zsh)
 
-cat /etc/shells
+use_sudo apt install dirmngr gnupg apt-transport-https ca-certificates software-properties-common
+use_sudo curl -fsSL https://download.sublimetext.com/sublimehq-pub.gpg | sudo apt-key add -
+use_sudo add-apt-repository "deb https://download.sublimetext.com/ apt/stable/"
+use_sudo apt update
+use_sudo apt install sublime-text
 
-zsh
