@@ -34,5 +34,5 @@ use_sudo apt install dirmngr gnupg apt-transport-https ca-certificates software-
 use_sudo curl -fsSL https://download.sublimetext.com/sublimehq-pub.gpg | sudo apt-key add -
 use_sudo add-apt-repository "deb https://download.sublimetext.com/ apt/stable/"
 use_sudo apt update
-use_sudo apt install sublime-text
+use_sudo apt install -y sublime-text
 
