@@ -4,21 +4,26 @@ Change Terminal to zsh + oh my zsh + powerlevel10k
 
 ## Installation
 
+#### Start with git clone and jump to step 2.
+
+```shell
+git clone https://github.com/jet-c-21/Ubuntu-Terminal-Setup.git && \
+cd Ubuntu-Terminal-Setup && ./add_fonts.sh 
+```
+
 #### 1. Install Fonts
 
 ```shell
 ./add_fonts.sh
 ```
 
-#### 2. Close terminal and open a new one
-
-#### 3. Change terminal font in preference
+#### 2. Once you see the ```oh-my-zsh``` logo, change the terminal to:
 
 ```shell
 Meslo NF
 ```
 
-#### 4. run the following command
+#### 3. run the following command
 
 ```shell
 cd ~ && \
