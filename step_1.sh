@@ -30,4 +30,4 @@ use_sudo apt install -y zsh
 
 chsh -s $(which zsh) -y
 
-logout
+exit
