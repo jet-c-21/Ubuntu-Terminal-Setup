@@ -3,14 +3,14 @@
 Change Terminal to zsh + oh my zsh + powerlevel10k
 
 ## 1. Install Fonts
+
 ```shell
 ./add_fonts.sh
 ```
 
-## 2. Change the font of terminal
+## 2. Close terminal and open a new one
 
-
-
+## 3. run the following command
 
 ```shell
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k && \
