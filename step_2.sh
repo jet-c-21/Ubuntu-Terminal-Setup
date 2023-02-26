@@ -13,9 +13,6 @@ COMMENT
   eval "${cmd}"
 }
 
-git clone https://github.com/romkatv/powerlevel10k.git $ZSH_CUSTOM/themes/powerlevel10k
-echo "finish download powerlevel10k"
-
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 echo "finish download zsh-autosuggestions"
 
