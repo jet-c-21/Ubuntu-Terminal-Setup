@@ -36,6 +36,13 @@ sed -i 's/plugins=(git)/plugins=(git zsh-autosuggestions z zsh-syntax-highlighti
 source ~/.zshrc
 ```
 
+#### 4. reboot or logout
+
+```shell
+sudo reboot
+```
+
+
 ## Other Command
 
 #### re-config p10k
