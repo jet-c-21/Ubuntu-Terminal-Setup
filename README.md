@@ -19,10 +19,15 @@ cd Ubuntu-Terminal-Setup && ./add_fonts.sh
 ```
 
 #### 2. Once you see the ```oh-my-zsh``` logo, change the terminal to:
-
 ```shell
 Meslo NF
 ```
+Note: If don't don't see the Meslo NF font in the scroll down list, reopen the terminal, and change the font, then:
+```
+reboot
+```
+
+
 
 #### 3. run the following command
 
