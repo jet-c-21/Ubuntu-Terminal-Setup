@@ -1,5 +1,7 @@
 set -e
 
+apt update && apt install -y unzip git wget curl wget zsh
+
 rm -rf /usr/share/fonts/truetype/MesloLGS_NF
 wget -O MesloLGS_NF.zip https://github.com/jet-c-21/MyFonts/releases/download/1.0.0/MesloLGS_NF.zip
 unzip -q MesloLGS_NF.zip
@@ -9,6 +11,5 @@ fc-cache -f -v
 clear
 echo "finish added fonts"
 
-apt update && apt install -y unzip git wget curl wget zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 chsh -s $(which zsh)
