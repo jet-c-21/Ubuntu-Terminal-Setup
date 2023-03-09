@@ -16,6 +16,7 @@ COMMENT
 echo "Please enter your sudo password:"
 read -s sudo_pwd
 
+use_sudo apt install -y fonts-noto-color-emoji
 use_sudo rm -rf /usr/share/fonts/truetype/MesloLGS_NF
 wget -O MesloLGS_NF.zip https://github.com/jet-c-21/MyFonts/releases/download/1.0.0/MesloLGS_NF.zip
 unzip -q MesloLGS_NF.zip
