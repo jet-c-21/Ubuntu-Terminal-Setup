@@ -1,6 +1,6 @@
 set -e
 
-apt update && apt install -y unzip git wget curl wget zsh
+apt update && apt install -y unzip git wget curl wget zsh fonts-noto-color-emoji
 
 rm -rf /usr/share/fonts/truetype/MesloLGS_NF
 wget -O MesloLGS_NF.zip https://github.com/jet-c-21/MyFonts/releases/download/1.0.0/MesloLGS_NF.zip
