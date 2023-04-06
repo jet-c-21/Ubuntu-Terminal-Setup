@@ -50,7 +50,7 @@ sudo reboot
 
 ## In docker Container
 ```shell
-cd ~ && apt update && apt install -y git unzip && \
+cd ~ && apt update && apt install -y git unzip fontconfig && \
 git clone https://github.com/jet-c-21/Ubuntu-Terminal-Setup.git && \
 cd Ubuntu-Terminal-Setup && ./docker_add_fonts.sh 
 ```
@@ -67,7 +67,7 @@ source ~/.zshrc
 
 ## In AWS EC2 Instance
 ```shell
-cd ~ && sudo apt update && sudo apt install -y git unzip && \
+cd ~ && sudo apt update && sudo apt install -y git unzip fontconfig && \
 git clone https://github.com/jet-c-21/Ubuntu-Terminal-Setup.git && \
 cd Ubuntu-Terminal-Setup && ./aws_ec2_add_fonts.sh
 ```
