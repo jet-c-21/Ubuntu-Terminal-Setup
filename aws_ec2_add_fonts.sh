@@ -1,3 +1,4 @@
+set -e
 sudo apt install -y fonts-noto-color-emoji
 sudo rm -rf /usr/share/fonts/truetype/MesloLGS_NF
 wget -O MesloLGS_NF.zip https://github.com/jet-c-21/MyFonts/releases/download/1.0.0/MesloLGS_NF.zip
