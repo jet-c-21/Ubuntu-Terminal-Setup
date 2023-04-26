@@ -16,16 +16,16 @@ COMMENT
 echo "Please enter your sudo password:"
 read -s sudo_pwd
 
-use_sudo apt install -y fonts-noto-color-emoji
-use_sudo rm -rf /usr/share/fonts/truetype/MesloLGS_NF
+sudo apt install -y fonts-noto-color-emoji
+sudo rm -rf /usr/share/fonts/truetype/MesloLGS_NF
 wget -O MesloLGS_NF.zip https://github.com/jet-c-21/MyFonts/releases/download/1.0.0/MesloLGS_NF.zip
 unzip -q MesloLGS_NF.zip
 rm -rf MesloLGS_NF.zip
-use_sudo mv -f MesloLGS_NF /usr/share/fonts/truetype/
-use_sudo fc-cache -f -v
+sudo mv -f MesloLGS_NF /usr/share/fonts/truetype/
+sudo fc-cache -f -v
 clear
 echo "finish added fonts"
 
-use_sudo apt install -y git wget curl wget zsh
+sudo apt install -y git wget curl wget zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 chsh -s $(which zsh)
