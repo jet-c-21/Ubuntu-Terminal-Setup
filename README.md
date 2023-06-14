@@ -7,7 +7,7 @@ Change Terminal to zsh + oh my zsh + powerlevel10k
 #### Start with git clone and jump to step 2.
 
 ```shell
-sudo apt install -y git && \
+cd ~ && sudo apt install -y git && \
 git clone https://github.com/jet-c-21/Ubuntu-Terminal-Setup.git && \
 cd Ubuntu-Terminal-Setup && ./add_fonts.sh 
 ```
