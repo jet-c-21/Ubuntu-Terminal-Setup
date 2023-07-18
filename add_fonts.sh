@@ -26,7 +26,10 @@ sudo fc-cache -f -v
 clear
 echo "finish added fonts"
 
-gsettings set org.gnome.desktop.interface monospace-font-name 'MesloLGS NF Regular 12'
+DEFAULT_PROFILE=$(gsettings get org.gnome.Terminal.ProfilesList default) && \
+DEFAULT_PROFILE=${DEFAULT_PROFILE:1:-1} && \
+gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:$DEFAULT_PROFILE/ font 'MesloLGS NF Regular 12' && \
+gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:$DEFAULT_PROFILE/ use-system-font false
 
 sudo apt install -y git wget curl wget zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
