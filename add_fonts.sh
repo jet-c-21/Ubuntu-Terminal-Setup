@@ -26,6 +26,7 @@ sudo fc-cache -f -v
 clear
 echo "finish added fonts"
 
+# change gnome terminal profile setting
 DEFAULT_PROFILE=$(gsettings get org.gnome.Terminal.ProfilesList default) && \
 DEFAULT_PROFILE=${DEFAULT_PROFILE:1:-1} && \
 gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:$DEFAULT_PROFILE/ font 'MesloLGS NF Regular 12' && \
