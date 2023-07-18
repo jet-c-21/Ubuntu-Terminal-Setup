@@ -26,6 +26,8 @@ sudo fc-cache -f -v
 clear
 echo "finish added fonts"
 
+gsettings set org.gnome.desktop.interface monospace-font-name 'MesloLGS NF Regular 12'
+
 sudo apt install -y git wget curl wget zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 chsh -s $(which zsh)
