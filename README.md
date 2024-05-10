@@ -4,7 +4,7 @@ Change Terminal to zsh + oh my zsh + powerlevel10k
 
 ## Installation
 
-#### Start with git clone and jump to step 2.
+#### Start with git clone and jump to step 3.
 
 ```shell
 cd ~ && sudo apt install -y git && \
