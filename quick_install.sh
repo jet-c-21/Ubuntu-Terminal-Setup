@@ -106,7 +106,8 @@ main () {
   install_ohmyzsh
   install_powerlevel10k
 
-  sleep 500
+  echo "Done! Let's Enjoy your new zsh shell 🍻"
+  exec zsh
 }
 
 main
