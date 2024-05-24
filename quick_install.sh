@@ -87,6 +87,9 @@ install_ohmyzsh() {
 
 install_powerlevel10k(){
   echo "installing powerlevel10k ..."
+
+  # from this line change shell to zsh and run the following cmd, is it possible to do it in shell file?
+
   cd ~
   git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
   git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
