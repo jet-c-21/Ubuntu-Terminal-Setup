@@ -37,10 +37,30 @@ COMMENT
 unlock_sudo() {
   local command="whoami"
   local result="$(use_sudo "$command")"
-  echo "[INFO] - unlock $result privilege"
+  echo "[*INFO*] - unlock $result privilege"
 }
 
 # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<< unlock_sudo <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+# >>>>>>>>>>>>>>>>>>>>>>>>>>>>>> parse user input args >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+USER_OPT_LAUNCH_ZSH=true
+
+while [[ "$#" -gt 0 ]]; do
+  case $1 in
+    --launch_zsh)
+      USER_OPT_LAUNCH_ZSH=true
+      ;;
+    --no_launch_zsh)
+      USER_OPT_LAUNCH_ZSH=false
+      ;;
+    *)
+      echo "Unknown option: $1"
+      exit 1
+      ;;
+  esac
+  shift
+done
+# <<<<<<<<<<<<<<<<<<<<<<<<<<<<<< parse user input args <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 add_emoji_and_fonts() {
   unlock_sudo
@@ -88,8 +108,6 @@ install_ohmyzsh() {
 install_powerlevel10k(){
   echo "installing powerlevel10k ..."
 
-  # from this line change shell to zsh and run the following cmd, is it possible to do it in shell file?
-
   cd ~
   git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
   git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
@@ -112,13 +130,19 @@ install_powerlevel10k(){
 }
 
 main () {
+  echo "start installing new shell for user: $(whoami)"
+
   add_emoji_and_fonts
   change_gnome_terminal_profile_setting
   install_ohmyzsh
   install_powerlevel10k
 
-  echo "Done! Let's Enjoy your new shell 🍻"
-  exec zsh
+  if [ "$USER_OPT_LAUNCH_ZSH" = true ]; then
+    echo "Done! Let's Enjoy your new shell 🍻"
+    exec zsh
+  else
+    echo "Done! You can manually start zsh by running 'zsh' command 🍻"
+  fi
 }
 
 main
