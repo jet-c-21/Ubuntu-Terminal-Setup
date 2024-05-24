@@ -107,9 +107,7 @@ install_powerlevel10k(){
   curl -o ~/.p10k.zsh https://raw.githubusercontent.com/jet-c-21/Ubuntu-Terminal-Setup/master/.p10k.zsh
   echo '[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh' >> ~/.zshrc
   echo "finish adding powerlevel10k configuration in ~/.zshrc"
-
-  source ~/.zshrc
-
+  
   echo "finish installing powerlevel10k"
 }
 
