@@ -67,6 +67,8 @@ change_gnome_terminal_profile_setting() {
   DEFAULT_PROFILE=${DEFAULT_PROFILE:1:-1} && \
   gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:$DEFAULT_PROFILE/ font 'MesloLGS NF Regular 12' && \
   gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:$DEFAULT_PROFILE/ use-system-font false
+
+  echo "finish changing gnome terminal profile setting"
 }
 
 install_ohmyzsh() {
@@ -74,12 +76,18 @@ install_ohmyzsh() {
   sudo apt install -y git wget curl wget zsh
 
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-  sudo chsh -s $(which zsh) -y
+  echo "finish running ohmyzsh install shell"
+
+  unlock_sudo
+  sudo chsh -s $(which zsh)
+
+  # auto help me to pass -y
+
 }
 
 main () {
-  add_emoji_and_fonts
-  change_gnome_terminal_profile_setting
+#  add_emoji_and_fonts
+#  change_gnome_terminal_profile_setting
   install_ohmyzsh
 }
 
