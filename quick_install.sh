@@ -112,8 +112,8 @@ install_powerlevel10k(){
 }
 
 main () {
-#  add_emoji_and_fonts
-#  change_gnome_terminal_profile_setting
+  add_emoji_and_fonts
+  change_gnome_terminal_profile_setting
   install_ohmyzsh
   install_powerlevel10k
 
