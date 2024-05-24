@@ -82,12 +82,17 @@ install_ohmyzsh() {
   # Change the default shell to zsh without prompting
   unlock_sudo
   sudo chsh -s $(which zsh) $(whoami)
+  echo "finish changing default shell to zsh"
+
+  exec zsh
 }
 
 main () {
 #  add_emoji_and_fonts
 #  change_gnome_terminal_profile_setting
   install_ohmyzsh
+
+  sleep 500
 }
 
 main
