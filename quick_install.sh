@@ -53,8 +53,17 @@ while [[ "$#" -gt 0 ]]; do
     --no_launch_zsh)
       USER_OPT_LAUNCH_ZSH=false
       ;;
+    --help)
+      echo "Usage: $0 [OPTIONS]"
+      echo "Options:"
+      echo "  --launch_zsh        Launch zsh after installation (default)"
+      echo "  --no_launch_zsh     Do not launch zsh after installation"
+      echo "  --help              Display this help message"
+      exit 0
+      ;;
     *)
       echo "Unknown option: $1"
+      echo "Use --help to see the valid options."
       exit 1
       ;;
   esac
