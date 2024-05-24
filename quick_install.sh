@@ -75,14 +75,13 @@ install_ohmyzsh() {
   unlock_sudo
   sudo apt install -y git wget curl wget zsh
 
-  sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+  # Auto confirm prompts for Oh My Zsh installation and change shell
+  echo "y" | sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
   echo "finish running ohmyzsh install shell"
 
+  # Change the default shell to zsh without prompting
   unlock_sudo
-  sudo chsh -s $(which zsh)
-
-  # auto help me to pass -y
-
+  sudo chsh -s $(which zsh) $(whoami)
 }
 
 main () {
