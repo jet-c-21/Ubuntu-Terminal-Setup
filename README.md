@@ -2,7 +2,19 @@
 
 Change Terminal to zsh + oh my zsh + powerlevel10k
 
-## Installation
+## Quick Install
+
+```shell
+cd ~ && \
+git clone https://github.com/jet-c-21/Ubuntu-Terminal-Setup.git && \
+cd Ubuntu-Terminal-Setup && ./quick_install.sh
+```
+
+#### Docker
+
+#### AWS EC2
+
+## Manual Installation
 
 #### Start with git clone and jump to step 3.
 
