@@ -139,7 +139,7 @@ install_powerlevel10k(){
 }
 
 main () {
-  echo "start installing new shell for user: $(whoami)"
+  echo "start installing new shell for user: $(whoami) ..."
 
   add_emoji_and_fonts
   change_gnome_terminal_profile_setting
