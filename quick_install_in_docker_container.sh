@@ -31,7 +31,7 @@ done
 # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<< parse user input args <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 add_emoji_and_fonts() {
-  apt install -y fonts-noto-color-emoji
+  apt update && apt install -y unzip git wget curl wget fonts-noto-color-emoji
 
   rm -rf /usr/share/fonts/truetype/MesloLGS_NF
 
