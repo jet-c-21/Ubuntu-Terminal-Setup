@@ -1,24 +1,6 @@
 #!/bin/bash
 set -e
 
-# >>>>>>>>>>>>>>>>>>>>>>>>>>>>>> fetch SUDO_PASSWD from user >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-echo "Please enter your sudo password:"
-read -s user_input_sudo_password
-is_sudo_password() {
-  local password=$1
-  echo $password | sudo -S true 2>/dev/null
-  return $?
-}
-
-if is_sudo_password "$user_input_sudo_password"; then
-    SUDO_PASSWD=$user_input_sudo_password
-else
-    echo "Error: Incorrect sudo password." >&2
-  exit 1
-fi
-# <<<<<<<<<<<<<<<<<<<<<<<<<<<<<< fetch SUDO_PASSWD from user <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-
-
 # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>> parse user input args >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 USER_OPT_LAUNCH_ZSH=true
 
