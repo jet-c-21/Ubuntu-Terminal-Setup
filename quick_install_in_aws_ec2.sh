@@ -72,7 +72,7 @@ done
 # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<< parse user input args <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 install_dependencies() {
-  sudo apt install -y unzip
+  sudo apt install -y unzip fontconfig
 }
 
 add_emoji_and_fonts() {
