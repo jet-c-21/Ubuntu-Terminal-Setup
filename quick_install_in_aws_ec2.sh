@@ -71,6 +71,10 @@ while [[ "$#" -gt 0 ]]; do
 done
 # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<< parse user input args <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
+install_dependencies() {
+  sudo apt install -y unzip
+}
+
 add_emoji_and_fonts() {
 #  unlock_sudo
   sudo apt install -y fonts-noto-color-emoji
@@ -141,6 +145,7 @@ install_powerlevel10k(){
 main () {
   echo "start installing new shell for user: $(whoami) ..."
 
+  install_dependencies
   add_emoji_and_fonts
   change_gnome_terminal_profile_setting
   install_ohmyzsh
