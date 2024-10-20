@@ -16,7 +16,7 @@ cd Ubuntu-Terminal-Setup && ./quick_install.sh
 cd ~ && git clone https://github.com/jet-c-21/Ubuntu-Terminal-Setup.git && cd Ubuntu-Terminal-Setup && ./quick_install_in_docker_container.sh
 ```
 
-#### In AWS EC2
+#### In AWS EC2 or GCP VM
 
 ```shell
 cd ~ && git clone https://github.com/jet-c-21/Ubuntu-Terminal-Setup.git && cd Ubuntu-Terminal-Setup && ./quick_install_in_aws_ec2.sh
