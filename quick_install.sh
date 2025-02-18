@@ -116,6 +116,30 @@ install_ohmyzsh() {
   echo "finish changing default shell to zsh"
 }
 
+install_powerlevel10k(){
+  echo "installing powerlevel10k ..."
+
+  cd ~
+  git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+  git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+  git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+  git clone https://github.com/agkozak/zsh-z ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-z
+  echo "finish cloning all zsh plugins"
+
+  # Update .zshrc
+  sed -i "/^ZSH_THEME=/c\ZSH_THEME=\"powerlevel10k/powerlevel10k\"" ~/.zshrc
+  echo "finish change zsh to powerlevel10k"
+
+  sed -i 's/plugins=(git)/plugins=(git zsh-autosuggestions z zsh-syntax-highlighting)/g' ~/.zshrc
+  echo "finish adding all zsh plugins in ~/.zshrc"
+
+  curl -o ~/.p10k.zsh https://raw.githubusercontent.com/jet-c-21/Ubuntu-Terminal-Setup/refs/heads/main/.p10k.zsh
+  echo '[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh' >> ~/.zshrc
+  echo "finish adding powerlevel10k configuration in ~/.zshrc"
+
+  echo "finish installing powerlevel10k"
+}
+
 change_hist_stamps_in_zshrc_file() {
   local user_zshrc_file="$HOME/.zshrc"
   local hist_stamp_pattern='^HIST_STAMPS='
@@ -144,31 +168,6 @@ change_hist_stamps_in_zshrc_file() {
   # Append HIST_STAMPS to the file
   printf "\n%s\n" "$hist_stamp_new" >> "$user_zshrc_file"
   echo "[*INFO*] - Added HIST_STAMPS in $user_zshrc_file"
-}
-
-
-install_powerlevel10k(){
-  echo "installing powerlevel10k ..."
-
-  cd ~
-  git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
-  git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-  git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-  git clone https://github.com/agkozak/zsh-z ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-z
-  echo "finish cloning all zsh plugins"
-
-  # Update .zshrc
-  sed -i "/^ZSH_THEME=/c\ZSH_THEME=\"powerlevel10k/powerlevel10k\"" ~/.zshrc
-  echo "finish change zsh to powerlevel10k"
-
-  sed -i 's/plugins=(git)/plugins=(git zsh-autosuggestions z zsh-syntax-highlighting)/g' ~/.zshrc
-  echo "finish adding all zsh plugins in ~/.zshrc"
-
-  curl -o ~/.p10k.zsh https://raw.githubusercontent.com/jet-c-21/Ubuntu-Terminal-Setup/refs/heads/main/.p10k.zsh
-  echo '[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh' >> ~/.zshrc
-  echo "finish adding powerlevel10k configuration in ~/.zshrc"
-
-  echo "finish installing powerlevel10k"
 }
 
 main () {
