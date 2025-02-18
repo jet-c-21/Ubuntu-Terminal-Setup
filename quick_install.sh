@@ -4,7 +4,7 @@ set -e
 # version: 1.0.1
 
 # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>> fetch SUDO_PASSWD from user >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-echo "Please enter your sudo password:"
+echo "[*INFO*] - Please enter your sudo password:"
 read -s user_input_sudo_password
 is_sudo_password() {
   local password=$1
@@ -15,7 +15,7 @@ is_sudo_password() {
 if is_sudo_password "$user_input_sudo_password"; then
     SUDO_PASSWD=$user_input_sudo_password
 else
-    echo "Error: Incorrect sudo password." >&2
+    echo "[*ERROR*] - Incorrect sudo password." >&2
   exit 1
 fi
 # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<< fetch SUDO_PASSWD from user <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
@@ -120,7 +120,7 @@ change_hist_stamps_in_zshrc_file() {
   local user_zshrc_file="$HOME/.zshrc"
   local hist_stamp_pattern='^HIST_STAMPS='
   local hist_stamp_comment='# HIST_STAMPS="mm/dd/yyyy"'
-  local hist_stamp_new='HIST_STAMPS="%F %T"'
+  local hist_stamp_new='HIST_STAMPS="%F %T "'
 
   # Return if .zshrc does not exist
   if [[ ! -f "$user_zshrc_file" ]]; then

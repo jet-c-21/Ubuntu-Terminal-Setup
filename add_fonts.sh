@@ -13,7 +13,7 @@ COMMENT
   eval "${cmd}"
 }
 
-#echo "Please enter your sudo password:"
+#echo "[*INFO*] - Please enter your sudo password:"
 #read -s sudo_pwd
 
 sudo apt install -y fonts-noto-color-emoji
