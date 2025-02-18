@@ -84,7 +84,7 @@ install_powerlevel10k(){
   sed -i 's/plugins=(git)/plugins=(git zsh-autosuggestions z zsh-syntax-highlighting)/g' ~/.zshrc
   echo "finish adding all zsh plugins in ~/.zshrc"
 
-  curl -o ~/.p10k.zsh https://raw.githubusercontent.com/jet-c-21/Ubuntu-Terminal-Setup/master/.p10k.zsh
+  curl -o ~/.p10k.zsh https://raw.githubusercontent.com/jet-c-21/Ubuntu-Terminal-Setup/refs/heads/main/.p10k.zsh
   echo '[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh' >> ~/.zshrc
   echo "finish adding powerlevel10k configuration in ~/.zshrc"
 
