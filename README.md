@@ -24,6 +24,13 @@ cd ~ && git clone https://github.com/jet-c-21/Ubuntu-Terminal-Setup.git && cd Ub
 cd ~ && git clone https://github.com/jet-c-21/Ubuntu-Terminal-Setup.git && cd Ubuntu-Terminal-Setup && ./quick_install_on_aws_ec2.sh
 ```
 
+## Desktop Option: Launch with Ubuntu-Dejavu
+```shell
+cd ~ && \
+git clone https://github.com/jet-c-21/Ubuntu-Terminal-Setup.git && \
+cd Ubuntu-Terminal-Setup && ./quick_install.sh --launch-ubuntu-dejavu
+```
+
 ## Manual Installation
 
 #### Start with git clone and jump to step 3.
