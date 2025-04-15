@@ -216,5 +216,5 @@ main () {
 
 # at the bottom of your all_in_one.sh
 if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
-    launcher_main "$@"
+    main "$@"
 fi
