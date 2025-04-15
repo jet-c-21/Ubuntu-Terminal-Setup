@@ -8,17 +8,17 @@ USER_OPT_LAUNCH_ZSH=true
 
 while [[ "$#" -gt 0 ]]; do
   case $1 in
-    --launch_zsh)
+    --launch-zsh)
       USER_OPT_LAUNCH_ZSH=true
       ;;
-    --no_launch_zsh)
+    --no-launch-zsh)
       USER_OPT_LAUNCH_ZSH=false
       ;;
     --help)
       echo "Usage: $0 [OPTIONS]"
       echo "Options:"
-      echo "  --launch_zsh        Launch zsh after installation (default)"
-      echo "  --no_launch_zsh     Do not launch zsh after installation"
+      echo "  --launch-zsh        Launch zsh after installation (default)"
+      echo "  --no-launch-zsh     Do not launch zsh after installation"
       echo "  --help              Display this help message"
       exit 0
       ;;

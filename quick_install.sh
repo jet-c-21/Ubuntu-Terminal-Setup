@@ -3,33 +3,35 @@ set -e
 
 # version: 1.0.1
 
-# >>>>>>>>>>>>>>>>>>>>>>>>>>>>>> fetch SUDO_PASSWD from user >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-echo "[*INFO*] - Please enter your sudo password:"
-read -s user_input_sudo_password
-is_sudo_password() {
-  local password=$1
-  echo $password | sudo -S true 2>/dev/null
-  return $?
-}
-
-if is_sudo_password "$user_input_sudo_password"; then
-    SUDO_PASSWD=$user_input_sudo_password
-else
-    echo "[*ERROR*] - Incorrect sudo password." >&2
-  exit 1
+# >>>>>>>>>>>>>>>>>>>>>>>>>>>>>> ask user input sudo password >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+if [[ -z "${SUDO_PASSWORD}" ]]; then
+  echo -n "[*INFO*] - Please enter your sudo password: "
+  read -s user_input_password
+  echo
+  verify_password() {
+    echo "$1" | sudo -S -v &>/dev/null
+  }
+  if verify_password "$user_input_password"; then
+    export SUDO_PASSWORD="$user_input_password"
+    echo "$SUDO_PASSWORD" | sudo -S -v &>/dev/null
+  else
+    echo "[*ERROR*] - Incorrect password." >&2
+    exit 1
+  fi
 fi
-# <<<<<<<<<<<<<<<<<<<<<<<<<<<<<< fetch SUDO_PASSWD from user <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+# <<<<<<<<<<<<<<<<<<<<<<<<<<<<<< ask user input sudo password <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
-# >>>>>>>>>>>>>>>>>>>>>>>>>>>>>> unlock_sudo >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-use_sudo() {
+
+# >>>>>>>>>>>>>>>>>>>>>>>>>>>>>> use and unlock sudo >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+use_sudo() { # sudo experiment wrapper function
   : <<COMMENT
 straight way:
-  echo "$SUDO_PASSWD" | sudo -S your command
+  echo "$SUDO_PASSWORD" | sudo -S your command
 example:
-  echo "$SUDO_PASSWD" | sudo -S apt-get update
+  echo "$SUDO_PASSWORD" | sudo -S apt-get update
 COMMENT
 
-  local cmd="echo ${SUDO_PASSWD} | sudo -SE "
+  local cmd="echo ${SUDO_PASSWORD} | sudo -SE "
   for param in "$@"; do
     cmd+="${param} "
   done
@@ -41,26 +43,34 @@ unlock_sudo() {
   local result="$(use_sudo "$command")"
   echo "[*INFO*] - unlock $result privilege"
 }
-
-# <<<<<<<<<<<<<<<<<<<<<<<<<<<<<< unlock_sudo <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+# <<<<<<<<<<<<<<<<<<<<<<<<<<<<<< use and unlock sudo <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>> parse user input args >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 USER_OPT_LAUNCH_ZSH=true
+USER_OPT_LAUNCH_UBUNTU_DEJAVU=false
 
 while [[ "$#" -gt 0 ]]; do
   case $1 in
-    --launch_zsh)
+    --launch-zsh)
       USER_OPT_LAUNCH_ZSH=true
       ;;
-    --no_launch_zsh)
+    --no-launch-zsh)
       USER_OPT_LAUNCH_ZSH=false
+      ;;
+    --launch-ubuntu-dejavu)
+      USER_OPT_LAUNCH_UBUNTU_DEJAVU=true
+      ;;
+    --no-launch-ubuntu-dejavu)
+      USER_OPT_LAUNCH_UBUNTU_DEJAVU=false
       ;;
     --help)
       echo "Usage: $0 [OPTIONS]"
       echo "Options:"
-      echo "  --launch_zsh        Launch zsh after installation (default)"
-      echo "  --no_launch_zsh     Do not launch zsh after installation"
-      echo "  --help              Display this help message"
+      echo "  --launch-zsh                Launch zsh after installation (default)"
+      echo "  --no-launch-zsh             Do not launch zsh after installation"
+      echo "  --launch-ubuntu-dejavu      Launch Ubuntu Dejavu setup after install"
+      echo "  --no-launch-ubuntu-dejavu   Do not launch Ubuntu Dejavu setup"
+      echo "  --help                      Display this help message"
       exit 0
       ;;
     *)
@@ -170,6 +180,15 @@ change_hist_stamps_in_zshrc_file() {
   echo "[*INFO*] - Added HIST_STAMPS in $user_zshrc_file"
 }
 
+launch_ubuntu_dejavu() {
+  cd "${Home}"
+
+  git clone https://github.com/jet-c-21/Ubuntu-Dejavu.git
+  cd Ubuntu-Dejavu
+  chmod +x scripts/*
+  ./scripts/ubuntu_dejavu.sh
+}
+
 main () {
   echo "start installing new shell for user: $(whoami) ..."
 
@@ -179,6 +198,14 @@ main () {
   install_powerlevel10k
   change_hist_stamps_in_zshrc_file
 
+    # Handle Ubuntu Dejavu launch — overrides zsh launch if set
+  if [ "$USER_OPT_LAUNCH_UBUNTU_DEJAVU" = true ]; then
+    echo "Launching Ubuntu Dejavu setup script..."
+    USER_OPT_LAUNCH_ZSH=false
+    launch_ubuntu_dejavu
+  fi
+
+
   if [ "$USER_OPT_LAUNCH_ZSH" = true ]; then
     echo "Done! Let's Enjoy your new shell 🍻"
     exec zsh
@@ -187,4 +214,7 @@ main () {
   fi
 }
 
-main
+# at the bottom of your all_in_one.sh
+if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
+    launcher_main "$@"
+fi
