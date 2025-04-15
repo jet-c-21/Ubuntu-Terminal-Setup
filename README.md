@@ -25,6 +25,7 @@ cd ~ && git clone https://github.com/jet-c-21/Ubuntu-Terminal-Setup.git && cd Ub
 ```
 
 ## Desktop Option: Launch with Ubuntu-Dejavu
+
 ```shell
 cd ~ && \
 git clone https://github.com/jet-c-21/Ubuntu-Terminal-Setup.git && \
