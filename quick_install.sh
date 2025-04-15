@@ -5,6 +5,7 @@ set -e
 
 # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>> ask user input sudo password >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 if [[ -z "${SUDO_PASSWORD}" ]]; then
+  echo "[*INFO*] - during installation, your fonts might be strange, do not worry, it will be fixed after installation"
   echo -n "[*INFO*] - Please enter your sudo password: "
   read -s user_input_password
   echo
